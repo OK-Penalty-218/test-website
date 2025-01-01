@@ -64,7 +64,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 75px; /* Increased the gap to 100px */
+            gap: 70px; /* Increased the gap to 100px */
             justify-content: center;
             align-items: center;
         }
@@ -79,7 +79,7 @@
             font-weight: bold;
             color: #D3D3D3;
             cursor: pointer;
-            padding: 10px 80px;
+            padding: 20px 90px;
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
             display: inline-block;
@@ -126,7 +126,7 @@
             margin: 0;
             border: 0;
             border-top: 1px solid #555555;
-            width: 75%; /* Adjusted to 80% width of the dropdown */
+            width: 80%; /* Adjusted to 80% width of the dropdown */
             margin: 10px auto;
         }
 
@@ -170,6 +170,10 @@
             padding: 1rem 2rem;
             font-family: 'Orbitron', sans-serif;
             display: none; /* Initially hidden */
+            width: 250px; /* Fixed width */
+            height: 100px; /* Fixed height */
+            line-height: 100px; /* Center the text vertically */
+            text-align: center;
         }
 
         footer {
@@ -199,6 +203,8 @@
             #countdown {
                 font-size: 3rem;
                 padding: 1rem;
+                width: 200px; /* Adjust width for mobile */
+                height: 80px; /* Adjust height for mobile */
             }
         }
     </style>
@@ -287,12 +293,13 @@
         updateCountdown();
         animateLoadingText(); // Start the loading text animation
 
-        // Hide the countdown initially for 30 seconds, then show it
+        // Hide the countdown initially for 30 seconds, then show it and change loading text
         setTimeout(() => {
             document.getElementById("countdown").style.display = "inline-block"; // Show the clock
-            document.getElementById("loading-text").textContent = "Loaded"; // Change loading text
+            document.getElementById("loading-text").textContent = "Loaded"; // Change loading text to "Loaded"
         }, 30000); // 30 seconds
     </script>
 </body>
 </html>
+
 

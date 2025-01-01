@@ -64,7 +64,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 60px; /* Reduced the gap to 60px */
+            gap: 40px; /* Reduced the gap to 40px */
             justify-content: center;
             align-items: center;
         }
@@ -79,7 +79,7 @@
             font-weight: bold;
             color: #D3D3D3;
             cursor: pointer;
-            padding: 10px 80px;
+            padding: 10px 40px; /* Reduced padding */
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
             display: inline-block;
@@ -155,15 +155,7 @@
             color: #F5F5F5;
             margin-bottom: 20px;
             font-weight: bold;
-            animation: dots 1.5s infinite;
             font-family: 'Orbitron', sans-serif;
-        }
-
-        @keyframes dots {
-            0% { content: "Loading."; }
-            33% { content: "Loading.."; }
-            66% { content: "Loading..."; }
-            100% { content: "Loading."; }
         }
 
         #countdown {
@@ -254,7 +246,7 @@
         </nav>
     </header>
     <div id="container">
-        <div id="loading-text">Loading...</div>
+        <div id="loading-text">Loading</div>
         <div id="countdown">Loading...</div>
     </div>
     <footer>
@@ -280,9 +272,20 @@
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
+        function animateLoadingText() {
+            const loadingTextElement = document.getElementById("loading-text");
+            let dotCount = 0;
+            setInterval(() => {
+                dotCount = (dotCount % 3) + 1;
+                loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
+            }, 500); // Update every 500ms
+        }
+
         setInterval(updateCountdown, 1000);
         updateCountdown();
+        animateLoadingText(); // Start the loading text animation
     </script>
 </body>
 </html>
+
 

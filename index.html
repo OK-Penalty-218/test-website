@@ -205,6 +205,87 @@
                 height: 80px; /* Adjust height for mobile */
             }
         }
+        /* Position hamburger menu in the top-right corner */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 1rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #D3D3D3;
+    border-radius: 2px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Dropdown menus on mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: #171717;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        padding: 1rem 0;
+        z-index: 1000;
+        text-align: left;
+        border-radius: 5px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    /* Submenus appear to the left of the hamburger menu */
+    nav ul li .dropdown {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 200px; /* Position to the left of the parent dropdown */
+        flex-direction: column;
+        background-color: #2f2f2f;
+        padding: 0.5rem;
+        border-radius: 4px;
+        z-index: 2000;
+    }
+
+    nav ul li:hover .dropdown {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .hamburger-menu.open span:nth-child(1) {
+        transform: rotate(45deg) translateY(9px);
+    }
+
+    .hamburger-menu.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.open span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-9px);
+    }
+}
     </style>
 </head>
 <body>
@@ -250,13 +331,46 @@
                 </li>
             </ul>
         </nav>
+        <div class="hamburger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<nav>
+    <ul>
+        <li>
+            <a href="#">About Me</a>
+            <div class="dropdown">
+                <a href="about-me/who.html">Who am I?</a>
+                <a href="about-me/what.html">What am I?</a>
+                <a href="about-me/when.html">When will I?</a>
+            </div>
+        </li>
+        <li>
+            <a href="#">My Blogs</a>
+            <div class="dropdown">
+                <a href="blogs/blog1.html">Blog 1</a>
+                <a href="blogs/blog2.html">Blog 2</a>
+                <a href="blogs/blog3.html">Blog 3</a>
+            </div>
+        </li>
+        <li>
+            <a href="#">Future Devs</a>
+            <div class="dropdown">
+                <a href="future-devs/future1.html">Future 1</a>
+                <a href="future-devs/future2.html">Future 2</a>
+                <a href="future-devs/future3.html">Future 3</a>
+            </div>
+        </li>
+    </ul>
+</nav>
     </header>
     <div id="container">
         <div id="loading-text">Loading</div>
         <div id="countdown">Loading...</div>
     </div>
     <footer>
-        <p>Made with ♥ by Chat GPT</p>
+        <p>“Guided by ChatGPT, your digital mentor, helping you bring ideas to life.”</p>
     </footer>
     <script>
         function updateCountdown() {
@@ -304,6 +418,16 @@ setTimeout(() => {
     document.getElementById("loading-text").textContent = "Loaded"; // Change loading text to "Loaded"
     stopLoadingTextAnimation(); // Stop the loading animation
 }, 30000); // 30 seconds
+    
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburgerMenu = document.querySelector(".hamburger-menu");
+    const navMenu = document.querySelector("nav ul");
+
+    hamburgerMenu.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        hamburgerMenu.classList.toggle("open");
+    });
+});
     </script>
 </body>
 </html>

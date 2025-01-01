@@ -18,7 +18,6 @@
             height: 100vh;
             background-color: #212121;
         }
-
         header {
             position: fixed;
             top: 0;
@@ -33,7 +32,6 @@
             height: 80px;
             z-index: 1000;
         }
-
         .logo {
             margin-left: 1rem;
             display: flex;
@@ -42,12 +40,10 @@
             width: 200px;
             justify-content: center;
         }
-
         .logo img {
             height: 60%;
             width: auto;
         }
-
         nav {
             flex-grow: 1;
             display: flex;
@@ -55,7 +51,6 @@
             align-items: center;
             position: relative;
         }
-
         nav ul {
             list-style: none;
             margin: 0;
@@ -65,11 +60,9 @@
             justify-content: center;
             align-items: center;
         }
-
         nav ul li {
             position: relative;
         }
-
         nav ul li a {
             text-decoration: none;
             font-size: 1rem;
@@ -82,12 +75,10 @@
             display: inline-block;
             text-align: center;
         }
-
         nav ul li a:hover {
             background-color: #2f2f2f;
             color: #ffffff;
         }
-
         nav ul li .dropdown {
             display: none;
             position: absolute;
@@ -104,7 +95,6 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-
         nav ul li .dropdown a {
             display: block;
             padding: 10px;
@@ -113,11 +103,9 @@
             font-size: 0.9rem;
             transition: background-color 0.3s ease;
         }
-
         nav ul li .dropdown a:hover {
             background-color: rgba(211, 211, 211, 0.2);
         }
-
         nav ul li .dropdown hr {
             margin: 0;
             border: 0;
@@ -125,19 +113,16 @@
             width: 75%;
             margin: 10px auto;
         }
-
         nav ul li:hover .dropdown {
             display: block;
             opacity: 1;
             visibility: visible;
         }
-
         .divider {
             width: 1px;
             height: 30px;
             background-color: #D3D3D3;
         }
-
         #container {
             background-color: #0d0d0d;
             color: #FFFFFF;
@@ -147,7 +132,6 @@
             max-width: 800px;
             border-radius: 10px;
         }
-
         #loading-text {
             font-size: 1.5rem;
             color: #F5F5F5;
@@ -155,7 +139,6 @@
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
         }
-
         #countdown {
             font-size: 4rem;
             color: red;
@@ -168,7 +151,6 @@
             line-height: 100px;
             text-align: center;
         }
-
         footer {
             position: fixed;
             bottom: 0;
@@ -179,19 +161,16 @@
             color: #D3D3D3;
             padding: 10px 0;
         }
-
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
             }
-
             nav ul li a {
                 font-size: 1.2rem;
                 padding: 10px 40px;
             }
-
             #countdown {
                 font-size: 2.5rem;
                 width: 250px;
@@ -254,26 +233,20 @@
     </footer>
     <script>
         let loadingTextInterval;
-
         function updateCountdown() {
             const now = new Date();
             const target = new Date();
             target.setHours(23, 31, 0, 0);
-
             if (now > target) {
                 target.setDate(target.getDate() + 1);
             }
-
             const difference = target - now;
-
             const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((difference / (1000 * 60)) % 60);
             const seconds = Math.floor((difference / 1000) % 60);
-
             document.getElementById("countdown").textContent =
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
-
         function animateLoadingText() {
             const loadingTextElement = document.getElementById("loading-text");
             let dotCount = 0;
@@ -286,19 +259,24 @@
         function stopLoadingTextAnimation() {
             clearInterval(loadingTextInterval);
         }
-
         function initializePage() {
             animateLoadingText();
-
-            setTimeout(() => {
+              setTimeout(() => {
                 stopLoadingTextAnimation();
                 document.getElementById("loading-text").textContent = "Loaded";
                 document.getElementById("countdown").style.display = "inline-block";
             }, 10000);
         }
-
         setInterval(updateCountdown, 1000);
         document.addEventListener("DOMContentLoaded", initializePage);
+        document.addEventListener("DOMContentLoaded", () => {
+          // Check if the user is on a mobile device
+          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (isMobile) {
+            // Redirect to a mobile-specific file
+            window.location.href = "mobile-home.html"; // Replace with your mobile page file
+          }
+        });
     </script>
 </body>
 </html>

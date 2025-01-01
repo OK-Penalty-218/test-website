@@ -270,47 +270,50 @@
     </footer>
     <script>
         function updateCountdown() {
-            const now = new Date();
-            const target = new Date();
-            target.setHours(23, 31, 0, 0);
+    const now = new Date();
+    const target = new Date();
+    target.setHours(23, 31, 0, 0);
 
-            if (now > target) {
-                target.setDate(target.getDate() + 1);
-            }
+    if (now > target) {
+        target.setDate(target.getDate() + 1);
+    }
 
-            const difference = target - now;
+    const difference = target - now;
 
-            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((difference / (1000 * 60)) % 60);
-            const seconds = Math.floor((difference / 1000) % 60);
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
 
-            document.getElementById("countdown").textContent = 
-                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
+    document.getElementById("countdown").textContent = 
+        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
 
-        function animateLoadingText() {
-            const loadingTextElement = document.getElementById("loading-text");
-            let dotCount = 0;
-            loadingTextInterval = setInterval(() => {
-                dotCount = (dotCount % 3) + 1;
-                loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
-            }, 500); // Update every 500ms
-        }
+function animateLoadingText() {
+    const loadingTextElement = document.getElementById("loading-text");
+    let dotCount = 0;
+    loadingTextInterval = setInterval(() => {
+        dotCount = (dotCount % 3) + 1;
+        loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
+    }, 500); // Update every 500ms
+}
 
-        function stopLoadingTextAnimation() {
-            clearInterval(loadingTextInterval); // Stop the animation
-        }
+function stopLoadingTextAnimation() {
+    clearInterval(loadingTextInterval); // Stop the animation
+}
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        animateLoadingText(); // Start the loading text animation
+// Initial countdown setup
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-        // Hide the countdown initially for 30 seconds, then show it and change loading text
-        setTimeout(() => {
-            document.getElementById("countdown").style.display = "inline-block"; // Show the clock
-            document.getElementById("loading-text").textContent = "Loaded"; // Change loading text to "Loaded"
-            stopLoadingTextAnimation(); // Stop the loading animation
-        }, 10000); // 30 seconds
+// Start the loading text animation
+animateLoadingText(); 
+
+// Hide the countdown initially for 10 seconds, then show it and change loading text
+setTimeout(() => {
+    document.getElementById("countdown").style.display = "inline-block"; // Show the clock
+    document.getElementById("loading-text").textContent = "Loaded"; // Change loading text to "Loaded"
+    stopLoadingTextAnimation(); // Stop the loading animation
+}, 30000); // 30 seconds
     </script>
 </body>
 </html>

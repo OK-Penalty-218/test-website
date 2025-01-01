@@ -64,7 +64,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 120px;
+            gap: 100px; /* Reduced the gap to 100px */
         }
 
         nav ul li {
@@ -89,18 +89,22 @@
             color: #ffffff;
         }
 
+        /* Updated dropdown styles */
         nav ul li .dropdown {
             display: none;
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #2f2f2f;
+            background-color: #171717; /* Match the header */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 240px;
+            width: 100%;
             text-align: center;
             border-radius: 4px;
             z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         nav ul li .dropdown a {
@@ -124,6 +128,8 @@
 
         nav ul li:hover .dropdown {
             display: block;
+            opacity: 1;
+            visibility: visible;
         }
 
         .divider {

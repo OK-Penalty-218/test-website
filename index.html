@@ -33,7 +33,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
+            height: 80px;
             z-index: 1000;
         }
 
@@ -41,10 +41,13 @@
             margin-left: 1rem;
             display: flex;
             align-items: center;
+            height: 100%;
+            width: 200px;
+            justify-content: center;
         }
 
         .logo img {
-            height: 40px;
+            height: 60%;
             width: auto;
         }
 
@@ -82,7 +85,7 @@
         }
 
         nav ul li a:hover {
-            background-color: #2f2f2f; /* Highlight color */
+            background-color: #2f2f2f;
             color: #ffffff;
         }
 
@@ -92,9 +95,9 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #2f2f2f; /* Dropdown menu matching the hover area */
+            background-color: #2f2f2f;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 160px;
+            width: 240px;
             text-align: center;
             border-radius: 4px;
             z-index: 1000;
@@ -111,6 +114,12 @@
 
         nav ul li .dropdown a:hover {
             background-color: rgba(211, 211, 211, 0.2);
+        }
+
+        nav ul li .dropdown hr {
+            margin: 0;
+            border: 0;
+            border-top: 1px solid #555555;
         }
 
         nav ul li:hover .dropdown {
@@ -161,9 +170,16 @@
         }
 
         footer {
-            margin-top: 20px;
-            color: #ccc;
-            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            background-color: #171717;
+            color: #D3D3D3;
+            padding: 10px 0;
+            z-index: 1000;
         }
 
         @media (max-width: 768px) {
@@ -198,7 +214,9 @@
                     <a>About</a>
                     <div class="dropdown">
                         <a href="about1.html">About 1</a>
+                        <hr>
                         <a href="about2.html">About 2</a>
+                        <hr>
                         <a href="about3.html">About 3</a>
                     </div>
                 </li>
@@ -207,7 +225,9 @@
                     <a>Blog</a>
                     <div class="dropdown">
                         <a href="blog1.html">Blog 1</a>
+                        <hr>
                         <a href="blog2.html">Blog 2</a>
+                        <hr>
                         <a href="blog3.html">Blog 3</a>
                     </div>
                 </li>
@@ -216,7 +236,9 @@
                     <a>Future</a>
                     <div class="dropdown">
                         <a href="future1.html">Future 1</a>
+                        <hr>
                         <a href="future2.html">Future 2</a>
+                        <hr>
                         <a href="future3.html">Future 3</a>
                     </div>
                 </li>
@@ -226,10 +248,10 @@
     <div id="container">
         <div id="loading-text">Loading...</div>
         <div id="countdown">Loading...</div>
-        <footer>
-            <p>© 2025 Your Name</p>
-        </footer>
     </div>
+    <footer>
+        <p>© 2025 Your Name</p>
+    </footer>
     <script>
         function updateCountdown() {
             const now = new Date();
@@ -255,6 +277,3 @@
     </script>
 </body>
 </html>
-
-
-

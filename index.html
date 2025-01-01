@@ -6,31 +6,25 @@
     <meta name="description" content="A simple website with a countdown timer to 11:31 PM every day.">
     <meta name="author" content="Your Name">
     
-    <!-- Open Graph (for social media sharing) -->
     <meta property="og:title" content="Countdown to 11:31 PM">
     <meta property="og:description" content="A simple website with a countdown timer to 11:31 PM every day.">
-    <meta property="og:image" content="logo.png"> <!-- Replace with your image URL -->
-    <meta property="og:url" content="https://yourwebsite.com"> <!-- Replace with your website URL -->
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://yourwebsite.com">
 
-    <!-- Twitter Card (for Twitter sharing) -->
     <meta name="twitter:title" content="Countdown to 11:31 PM">
     <meta name="twitter:description" content="A simple website with a countdown timer to 11:31 PM every day.">
-    <meta name="twitter:image" content="logo.png"> <!-- Replace with your image URL -->
+    <meta name="twitter:image" content="logo.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <title>Countdown to 11:31 PM</title>
     
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Replace with your favicon file name -->
-    <link rel="icon" href="favicon.png" type="image/png"> <!-- Optionally, add PNG format -->
-    
-    <!-- Google Fonts (Digital font) -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Inline CSS */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
@@ -40,8 +34,8 @@
             justify-content: center;
             align-items: center;
             box-sizing: border-box;
-            padding: 60px; /* Ensure minimum space on all sides */
-            background-color: #1c1c1c; /* Slight black background for the body */
+            padding: 60px;
+            background-color: #333333;
         }
 
         header {
@@ -49,33 +43,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(211, 211, 211, 0.8); /* Light gray with semi-transparency */
-            color: #D3D3D3; /* Off-white color for header text */
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #D3D3D3;
             padding: 1rem 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            z-index: 1000; /* Ensures header stays on top */
-            flex-wrap: wrap;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        nav ul li a {
-            color: #D3D3D3; /* Off-white color for the nav links */
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
+            z-index: 1000;
         }
 
         .logo {
@@ -89,6 +63,28 @@
             width: auto;
         }
 
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 80px;
+        }
+
+        nav ul li a {
+            color: #D3D3D3;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
         #countdown {
             font-size: 4rem;
             color: red;
@@ -97,24 +93,14 @@
             border-radius: 10px;
             display: inline-block;
             padding: 1rem 2rem;
-            font-family: 'Courier New', Courier, monospace; /* Digital clock style */
+            font-family: 'Orbitron', sans-serif; /* Digital clock font */
         }
 
-        /* Animation for the loading text */
         #loading-text {
             font-size: 1.5rem;
-            color: #D3D3D3; /* Off-white color for loading text */
-            display: inline-block;
-            margin-bottom: 10px;
-            animation: dots 1.5s infinite step-start;
-            font-family: 'Press Start 2P', cursive; /* Digital font */
-        }
-
-        @keyframes dots {
-            0% { content: "."; }
-            33% { content: ".."; }
-            66% { content: "..."; }
-            100% { content: "."; }
+            color: #F5F5F5;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
 
         footer {
@@ -126,12 +112,12 @@
         main {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -150,19 +136,18 @@
             }
 
             #countdown {
-                font-size: 3rem; /* Smaller font size for mobile */
+                font-size: 3rem;
                 padding: 1rem;
             }
 
             body {
-                padding: 20px; /* Less padding on smaller screens */
+                padding: 20px;
             }
         }
 
-        /* Extra Small Mobile Optimization */
         @media (max-width: 480px) {
             #countdown {
-                font-size: 2.5rem; /* Further reduce font size on very small screens */
+                font-size: 2.5rem;
                 padding: 0.8rem;
             }
 
@@ -176,7 +161,7 @@
     <header>
         <div class="logo">
             <a href="home.html">
-                <img src="logo.png" alt="Logo"> <!-- Replace 'logo.png' with your logo file name -->
+                <img src="logo.png" alt="Logo">
             </a>
         </div>
         <nav>
@@ -188,21 +173,20 @@
         </nav>
     </header>
     <main>
-        <div id="loading-text">Loading</div>
+        <div id="loading-text">Loading...</div>
         <div id="countdown">Loading...</div>
     </main>
     <footer>
         <p>© 2025 Your Name</p>
     </footer>
     <script>
-        // Inline JavaScript
         function updateCountdown() {
             const now = new Date();
             const target = new Date();
-            target.setHours(23, 31, 0, 0); // 11:31 PM
+            target.setHours(23, 31, 0, 0);
 
             if (now > target) {
-                target.setDate(target.getDate() + 1); // Set to the next day
+                target.setDate(target.getDate() + 1);
             }
 
             const difference = target - now;
@@ -215,9 +199,9 @@
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        // Update the countdown every second
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
 </body>
 </html>
+

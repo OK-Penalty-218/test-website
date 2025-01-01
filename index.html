@@ -31,12 +31,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(30, 30, 30, 0.9);
+            background-color: rgba(20, 20, 20, 0.9);
             color: #D3D3D3;
-            padding: 1rem 0;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 60px;
             z-index: 1000;
         }
 
@@ -77,9 +78,11 @@
             font-weight: bold;
             color: #D3D3D3;
             cursor: pointer;
-            padding: 10px;
+            padding: 10px 80px; /* Wider clickable area */
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            text-align: center;
         }
 
         nav ul li a:hover {
@@ -94,7 +97,7 @@
             left: 0;
             background-color: #444;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
+            width: 160px; /* Matches hover area */
             text-align: left;
             border-radius: 4px;
             z-index: 1000;
@@ -119,15 +122,13 @@
 
         .divider {
             width: 1px;
-            height: 50px;
+            height: 30px;
             background-color: #D3D3D3;
         }
 
         #countdown-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
+            margin-top: 150px; /* Moves clock lower on the page */
             text-align: center;
         }
 
@@ -168,6 +169,7 @@
 
             nav ul li a {
                 font-size: 1.2rem;
+                padding: 10px 40px;
             }
 
             #countdown {

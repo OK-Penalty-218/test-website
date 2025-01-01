@@ -64,7 +64,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 70px; /* Increased the gap to 100px */
+            gap: 75px; /* Increased the gap to 100px */
             justify-content: center;
             align-items: center;
         }
@@ -79,7 +79,7 @@
             font-weight: bold;
             color: #D3D3D3;
             cursor: pointer;
-            padding: 20px 90px;
+            padding: 10px 80px;
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
             display: inline-block;
@@ -126,7 +126,7 @@
             margin: 0;
             border: 0;
             border-top: 1px solid #555555;
-            width: 80%; /* Adjusted to 80% width of the dropdown */
+            width: 75%; /* Adjusted to 80% width of the dropdown */
             margin: 10px auto;
         }
 
@@ -169,6 +169,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             font-family: 'Orbitron', sans-serif;
+            display: none; /* Initially hidden */
         }
 
         footer {
@@ -285,6 +286,13 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
         animateLoadingText(); // Start the loading text animation
+
+        // Hide the countdown initially for 30 seconds, then show it
+        setTimeout(() => {
+            document.getElementById("countdown").style.display = "inline-block"; // Show the clock
+            document.getElementById("loading-text").textContent = "Loaded"; // Change loading text
+        }, 30000); // 30 seconds
     </script>
 </body>
 </html>
+

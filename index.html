@@ -15,8 +15,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            height: 300vh;
-            box-sizing: border-box;
+            height: 100vh;
             background-color: #212121;
         }
 
@@ -27,6 +26,7 @@
             width: 100%;
             background-color: #171717;
             color: #D3D3D3;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -53,6 +53,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         nav ul {
@@ -74,9 +75,12 @@
             font-size: 1rem;
             font-weight: bold;
             color: #D3D3D3;
-            padding: 10px 20px;
+            cursor: pointer;
+            padding: 10px 85px;
             border-radius: 5px;
             transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            text-align: center;
         }
 
         nav ul li a:hover {
@@ -107,10 +111,19 @@
             text-decoration: none;
             color: #D3D3D3;
             font-size: 0.9rem;
+            transition: background-color 0.3s ease;
         }
 
         nav ul li .dropdown a:hover {
             background-color: rgba(211, 211, 211, 0.2);
+        }
+
+        nav ul li .dropdown hr {
+            margin: 0;
+            border: 0;
+            border-top: 1px solid #555555;
+            width: 75%;
+            margin: 10px auto;
         }
 
         nav ul li:hover .dropdown {
@@ -128,7 +141,7 @@
         #container {
             background-color: #0d0d0d;
             color: #FFFFFF;
-            margin: 200px auto 0;
+            margin: 150px auto 0;
             padding: 20px;
             width: 90%;
             max-width: 800px;
@@ -155,24 +168,14 @@
             line-height: 100px;
             text-align: center;
         }
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
 
-#countdown {
-    display: none; /* Initially hidden */
-}        footer {
-            position: absolute;
+        footer {
+            position: fixed;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 100%;
             text-align: center;
+            background-color: #171717;
             color: #D3D3D3;
             padding: 10px 0;
         }
@@ -184,36 +187,16 @@
                 gap: 1rem;
             }
 
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 10px 40px;
+            }
+
             #countdown {
-                font-size: 3rem;
-                width: 200px;
+                font-size: 2.5rem;
+                width: 250px;
                 height: 80px;
-            }
-
-            .hamburger-menu {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 25px;
-                cursor: pointer;
-                margin-right: 1rem;
-            }
-
-            .hamburger-menu span {
-                display: block;
-                height: 4px;
-                width: 100%;
-                background-color: #D3D3D3;
-                border-radius: 2px;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            nav ul.active {
-                display: flex;
+                line-height: 80px;
             }
         }
     </style>
@@ -221,43 +204,46 @@
 <body>
     <header>
         <div class="logo">
-            <a href="home.html">
+            <a href="/">
                 <img src="images/logo.png" alt="Logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="#">About Me</a>
+                    <a>About Me</a>
                     <div class="dropdown">
                         <a href="about-me/who.html">Who am I?</a>
+                        <hr>
                         <a href="about-me/what.html">What am I?</a>
+                        <hr>
                         <a href="about-me/when.html">When will I?</a>
                     </div>
                 </li>
+                <div class="divider"></div>
                 <li>
-                    <a href="#">My Blogs</a>
+                    <a>My Blogs</a>
                     <div class="dropdown">
                         <a href="blogs/blog1.html">Blog 1</a>
+                        <hr>
                         <a href="blogs/blog2.html">Blog 2</a>
+                        <hr>
                         <a href="blogs/blog3.html">Blog 3</a>
                     </div>
                 </li>
+                <div class="divider"></div>
                 <li>
-                    <a href="#">Future Devs</a>
+                    <a>Future Devs</a>
                     <div class="dropdown">
                         <a href="future-devs/future1.html">Future 1</a>
+                        <hr>
                         <a href="future-devs/future2.html">Future 2</a>
+                        <hr>
                         <a href="future-devs/future3.html">Future 3</a>
                     </div>
                 </li>
             </ul>
         </nav>
-        <div class="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </header>
     <div id="container">
         <div id="loading-text">Loading</div>
@@ -267,6 +253,8 @@
         <p>“Guided by ChatGPT, your digital mentor, helping you bring ideas to life.”</p>
     </footer>
     <script>
+        let loadingTextInterval;
+
         function updateCountdown() {
             const now = new Date();
             const target = new Date();
@@ -282,28 +270,36 @@
             const minutes = Math.floor((difference / (1000 * 60)) % 60);
             const seconds = Math.floor((difference / 1000) % 60);
 
-            document.getElementById("countdown").textContent = 
+            document.getElementById("countdown").textContent =
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
+        function animateLoadingText() {
+            const loadingTextElement = document.getElementById("loading-text");
+            let dotCount = 0;
+            loadingTextInterval = setInterval(() => {
+                dotCount = (dotCount % 3) + 1;
+                loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
+            }, 500);
+        }
+
+        function stopLoadingTextAnimation() {
+            clearInterval(loadingTextInterval);
+        }
+
+        function initializePage() {
+            animateLoadingText();
+
+            setTimeout(() => {
+                stopLoadingTextAnimation();
+                document.getElementById("loading-text").textContent = "Loaded";
+                document.getElementById("countdown").style.display = "inline-block";
+            }, 10000);
+        }
+
         setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const hamburgerMenu = document.querySelector(".hamburger-menu");
-            const navMenu = document.querySelector("nav ul");
-
-            hamburgerMenu.addEventListener("click", () => {
-                navMenu.classList.toggle("active");
-                hamburgerMenu.classList.toggle("open");
-            });
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        document.getElementById("loading-text").style.display = "none";
-        document.getElementById("countdown").style.display = "block";
-    }, 2000); // Adjust timing as needed
-});
+        document.addEventListener("DOMContentLoaded", initializePage);
     </script>
 </body>
 </html>
+

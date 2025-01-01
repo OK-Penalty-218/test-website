@@ -155,8 +155,18 @@
             line-height: 100px;
             text-align: center;
         }
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
 
-        footer {
+#countdown {
+    display: none; /* Initially hidden */
+}        footer {
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -288,6 +298,12 @@
                 hamburgerMenu.classList.toggle("open");
             });
         });
+        document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.getElementById("loading-text").style.display = "none";
+        document.getElementById("countdown").style.display = "block";
+    }, 2000); // Adjust timing as needed
+});
     </script>
 </body>
 </html>

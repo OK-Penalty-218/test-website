@@ -28,31 +28,36 @@
             color: #D3D3D3;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centers the text */
+            justify-content: center;
             height: 80px;
             padding: 0 20px;
             z-index: 1000;
-            font-family: 'Orbitron', sans-serif; /* Clean modern font */
+            font-family: 'Arial', sans-serif;
             font-size: 1.5rem;
             font-weight: bold;
         }
+        .site-title {
+            flex-grow: 1;
+            text-align: center;
+        }
         .hamburger-menu {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
             height: 25px;
             cursor: pointer;
-            position: absolute;
-            right: 50px; /* Position hamburger menu on the right */
-            top: 50%;
-            transform: translateY(-50%);
         }
+
         .hamburger-menu span {
             display: block;
             height: 4px;
             width: 100%;
-            background-color: #D3D3D3; /* Ensured visibility */
+            background-color: #D3D3D3;
             border-radius: 2px;
         }
         nav {
@@ -60,8 +65,8 @@
             flex-direction: column;
             align-items: flex-start;
             position: fixed;
-            top: 80px; /* Positioned below the header */
-            right: 20px;
+            top: 80px;
+            right: 10px;
             width: 200px;
             background-color: rgba(23, 23, 23, 0.9);
             border-radius: 5px;
@@ -103,20 +108,19 @@
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
         }
+
         #countdown {
             font-size: 4rem;
             color: red;
             background-color: black;
             border: 4px solid lightgray;
             border-radius: 10px;
-            display: inline-block;
-            padding: 1rem 2rem;
-            font-family: 'Orbitron', sans-serif;
-            display: none; /* Initially hidden */
-            width: 350px; /* Fixed width */
-            height: 100px; /* Fixed height */
-            line-height: 100px; /* Center the text vertically */
+            display: none;
+            width: 350px;
+            height: 100px;
+            line-height: 100px;
             text-align: center;
+            font-family: 'Orbitron', sans-serif;
         }
         footer {
             position: fixed;
@@ -127,11 +131,19 @@
             color: #D3D3D3;
             padding: 10px 0;
         }
+        @media (max-width: 768px) {
+            #countdown {
+                font-size: 3rem;
+                width: 300px;
+                height: 80px;
+                line-height: 80px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        eleven31
+        <div class="site-title">eleven31</div>
         <div class="hamburger-menu">
             <span></span>
             <span></span>
@@ -151,8 +163,6 @@
         <p>“Guided by ChatGPT, your digital mentor, helping you bring ideas to life.”</p>
     </footer>
     <script>
-         <script>
-        let loadingTextInterval;
         function updateCountdown() {
             const now = new Date();
             const target = new Date();
@@ -164,8 +174,8 @@
             const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((difference / (1000 * 60)) % 60);
             const seconds = Math.floor((difference / 1000) % 60);
-            document.getElementById("countdown").textContent =
-                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.to>
+            document.getElementById("countdown").textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
         function animateLoadingText() {
             const loadingTextElement = document.getElementById("loading-text");
@@ -175,29 +185,23 @@
                 loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
             }, 500);
         }
-                function stopLoadingTextAnimation() {
+        function stopLoadingTextAnimation() {
             clearInterval(loadingTextInterval);
         }
-        function initializePage() {
-            animateLoadingText();
-              setTimeout(() => {
-                stopLoadingTextAnimation();
-                document.getElementById("loading-text").textContent = "Loaded";
-                document.getElementById("countdown").style.display = "inline-block";
-            }, 10000);
-        }
-        setInterval(updateCountdown, 1000);
         document.addEventListener("DOMContentLoaded", () => {
             const hamburgerMenu = document.querySelector(".hamburger-menu");
             const nav = document.querySelector("nav");
             hamburgerMenu.addEventListener("click", () => {
                 nav.classList.toggle("active");
             });
-            document.addEventListener("click", (e) => {
-                if (!nav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-                    nav.classList.remove("active");
-                }
-            });
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+            animateLoadingText();
+            setTimeout(() => {
+                document.getElementById("countdown").style.display = "inline-block";
+                document.getElementById("loading-text").textContent = "Loaded";
+                stopLoadingTextAnimation();
+            }, 30000);
         });
     </script>
 </body>

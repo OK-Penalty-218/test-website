@@ -39,13 +39,22 @@
             right: 10px; /* Moved to the top-right corner */
             z-index: 1000;
         }
-        .hamburger-menu span {
+        hamburger-menu span {
             display: block;
             height: 4px;
             width: 100%;
             background-color: #D3D3D3;
             border-radius: 2px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+        }            
+        hamburger-menu.open span:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0; /* Middle line disappears */
+        }
+        .hamburger-menu.open span:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
         }
         nav {
             display: none;
@@ -194,13 +203,15 @@
             const hamburgerMenu = document.querySelector(".hamburger-menu");
             const nav = document.querySelector("nav");
           hamburgerMenu.addEventListener("click", () => {
-              nav.classList.toggle("active");
+            hamburgerMenu.classList.toggle("open"); // Toggle the 'open' class
+            nav.classList.toggle("active"); // Toggle the dropdown menu
           });
-          // Optional: Close the menu when clicking outside
+          // Optional: Close the menu and reset the hamburger when clicking outside
           document.addEventListener("click", (e) => {
-              if (!nav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+            if (!nav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
               nav.classList.remove("active");
-              }
+              hamburgerMenu.classList.remove("open"); // Reset to lines
+             }
           });
         });
     </script>

@@ -24,22 +24,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #171717;
+            background-color: #171717; /* Restored original header background */
             color: #D3D3D3;
-            padding: 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             height: 80px;
+            padding: 0 20px;
             z-index: 1000;
-        }
-        .logo {
-            margin: 20px auto;
-            display: block;
-        }
-        .logo img {
-            height: 60px;
-            width: auto;
         }
         .hamburger-menu {
             display: flex;
@@ -48,36 +40,21 @@
             width: 30px;
             height: 25px;
             cursor: pointer;
-            position: fixed;
-            top: 10px;
-            right: 10px; /* Moved to the top-right corner */
-            z-index: 1000;
-            background-color: #d3d3d3;
         }
-        hamburger-menu span {
+        .hamburger-menu span {
             display: block;
             height: 4px;
             width: 100%;
-            background-color: #d3d3d3;
+            background-color: #D3D3D3; /* Ensured visibility */
             border-radius: 2px;
-            transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-        }
-        hamburger-menu.open span:nth-child(1) {
-            transform: translateY(10px) rotate(45deg);
-        }
-        .hamburger-menu.open span:nth-child(2) {
-            opacity: 0; /* Middle line disappears */
-        }
-        .hamburger-menu.open span:nth-child(3) {
-            transform: translateY(-10px) rotate(-45deg);
         }
         nav {
             display: none;
             flex-direction: column;
             align-items: flex-start;
             position: fixed;
-            top: 45px; /* Positioned below the hamburger menu */
-            right: 10px; /* Aligned with the hamburger menu */
+            top: 80px; /* Positioned below the header */
+            right: 20px;
             width: 200px;
             background-color: rgba(23, 23, 23, 0.9);
             border-radius: 5px;
@@ -90,7 +67,7 @@
         }
         nav a {
             text-decoration: none;
-            font-size: 1rem;            
+            font-size: 1rem;
             font-weight: bold;
             color: #D3D3D3;
             padding: 10px;
@@ -143,39 +120,22 @@
             color: #D3D3D3;
             padding: 10px 0;
         }
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-        #countdown {
-            font-size: 3rem;
-            padding: 1rem;
-            width: 300px; /* Adjust width for mobile */
-            height: 80px; /* Adjust height for mobile */
-            line-height: 80px;
-            }
-        }    
     </style>
-</head>   
+</head>
 <body>
     <header>
-      <div>eleven31</div>
-      <div class="hamburger-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav>
-        <a href="about-me.html">About Me</a>
-        <a href="blogs.html">My Blogs</a>
-        <a href="future-devs.html">Future Devs</a>
-      </nav>
-    </header> 
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo">
-    </div>
+        <div>eleven31</div>
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="about-me.html">About Me</a>
+            <a href="blogs.html">My Blogs</a>
+            <a href="future-devs.html">Future Devs</a>
+        </nav>
+    </header>
     <div id="container">
         <div id="loading-text">Loading</div>
         <div id="countdown">Loading...</div>
@@ -184,53 +144,19 @@
         <p>“Guided by ChatGPT, your digital mentor, helping you bring ideas to life.”</p>
     </footer>
     <script>
-        function updateCountdown() {
-            const now = new Date();
-            const target = new Date();
-            target.setHours(23, 31, 0, 0);
-            if (now > target) {
-                target.setDate(target.getDate() + 1);
-            }
-            const difference = target - now;
-            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((difference / (1000 * 60)) % 60);
-            const seconds = Math.floor((difference / 1000) % 60);
-            document.getElementById("countdown").textContent = 
-                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-        function animateLoadingText() {
-            const loadingTextElement = document.getElementById("loading-text");
-            let dotCount = 0;
-            loadingTextInterval = setInterval(() => {
-                dotCount = (dotCount % 3) + 1;
-                loadingTextElement.textContent = "Loading" + '.'.repeat(dotCount);
-            }, 500);
-        }
-        function stopLoadingTextAnimation() {
-            clearInterval(loadingTextInterval);
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        animateLoadingText();
-        setTimeout(() => {
-            document.getElementById("countdown").style.display = "inline-block";
-            document.getElementById("loading-text").textContent = "Loaded";
-            stopLoadingTextAnimation();
-        }, 30000);
         document.addEventListener("DOMContentLoaded", () => {
             const hamburgerMenu = document.querySelector(".hamburger-menu");
             const nav = document.querySelector("nav");
-          hamburgerMenu.addEventListener("click", () => {
-            hamburgerMenu.classList.toggle("open"); // Toggle the 'open' class
-            nav.classList.toggle("active"); // Toggle the dropdown menu
-          });
-          // Optional: Close the menu and reset the hamburger when clicking outside
-          document.addEventListener("click", (e) => {
-            if (!nav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-              nav.classList.remove("active");
-              hamburgerMenu.classList.remove("open"); // Reset to lines
-             }
-          });
+
+            hamburgerMenu.addEventListener("click", () => {
+                nav.classList.toggle("active");
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!nav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                    nav.classList.remove("active");
+                }
+            });
         });
     </script>
 </body>

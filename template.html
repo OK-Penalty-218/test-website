@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Counting down to 11:31 PM every day.">
+    <meta name="author" content="OK-Penalty-218">
+    <title>eleven31</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            height: 100vh;
+            background-color: #212121;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #171717;
+            color: #D3D3D3;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            z-index: 1000;
+        }
+        .logo {
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 200px;
+            justify-content: center;
+        }
+        .logo img {
+            height: 60%;
+            width: auto;
+        }
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #D3D3D3;
+            cursor: pointer;
+            padding: 10px 85px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+        nav ul li a:hover {
+            background-color: #2f2f2f;
+            color: #ffffff;
+        }
+        nav ul li .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #171717;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            text-align: center;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        nav ul li .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #D3D3D3;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li .dropdown a:hover {
+            background-color: rgba(211, 211, 211, 0.2);
+        }
+        nav ul li .dropdown hr {
+            margin: 0;
+            border: 0;
+            border-top: 1px solid #555555;
+            width: 75%;
+            margin: 10px auto;
+        }
+        nav ul li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+        .divider {
+            width: 1px;
+            height: 30px;
+            background-color: #D3D3D3;
+        }
+        #container {
+            background-color: #0d0d0d;
+            color: #FFFFFF;
+            margin: 150px auto 0;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+        #loading-text {
+            font-size: 1.5rem;
+            color: #F5F5F5;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+        #countdown {
+            font-size: 4rem;
+            color: red;
+            background-color: black;
+            border: 4px solid lightgray;
+            border-radius: 10px;
+            display: none;
+            width: 350px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #171717;
+            color: #D3D3D3;
+            padding: 10px 0;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 10px 40px;
+            }
+            #countdown {
+                font-size: 2.5rem;
+                width: 250px;
+                height: 80px;
+                line-height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/home.html">
+                <img src="/images/logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a>About Me</a>
+                    <div class="dropdown">
+                        <a href="/abtme/who.html">Who am I?</a>
+                        <hr>
+                        <a href="/abtme/what.html">What am I?</a>
+                        <hr>
+                        <a href="/abtmme/when.html">When will I?</a>
+                    </div>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a>My Blogs</a>
+                    <div class="dropdown">
+                        <a href="/blg/templte.html">Blog 1</a>
+                        <hr>
+                        <a href="/blg/template.html">Blog 2</a>
+                        <hr>
+                        <a href="/blg/template.html">Blog 3</a>
+                    </div>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a>Future Devs</a>
+                    <div class="dropdown">
+                        <a href="/fut/template.html">Future 1</a>
+                        <hr>
+                        <a href="/fut/template.html">Future 2</a>
+                        <hr>
+                        <a href="/fut/template.html">Future 3</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <p></p> <!-- Placeholder for the main content -->
+    </div>
+    <footer>
+        <p>Made with ♥ by Chat GPT</p>
+    </footer>
+</body>
+</html>

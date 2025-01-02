@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Template for future pages.">
+    <meta name="description" content="Counting down to 11:31 PM every day.">
     <meta name="author" content="OK-Penalty-218">
-    <title>eleven31 Template</title>
+    <title>eleven31</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -15,8 +15,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            height: 300vh;
-            box-sizing: border-box;
+            height: 100vh;
             background-color: #212121;
         }
         header {
@@ -45,7 +44,6 @@
             height: 60%;
             width: auto;
         }
-
         nav {
             flex-grow: 1;
             display: flex;
@@ -58,7 +56,7 @@
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 60px; /* Increased the gap to 100px */
+            gap: 60px;
             justify-content: center;
             align-items: center;
         }
@@ -81,23 +79,22 @@
             background-color: #2f2f2f;
             color: #ffffff;
         }
-        /* Updated dropdown styles */
         nav ul li .dropdown {
             display: none;
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #171717; /* Match the header */
+            background-color: #171717;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 200px; /* Widened dropdown */
+            width: 200px;
             text-align: center;
             border-radius: 4px;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-        
+        }
         nav ul li .dropdown a {
             display: block;
             padding: 10px;
@@ -106,16 +103,14 @@
             font-size: 0.9rem;
             transition: background-color 0.3s ease;
         }
-
         nav ul li .dropdown a:hover {
             background-color: rgba(211, 211, 211, 0.2);
         }
-
         nav ul li .dropdown hr {
             margin: 0;
             border: 0;
             border-top: 1px solid #555555;
-            width: 75%; /* Adjusted to 80% width of the dropdown */
+            width: 75%;
             margin: 10px auto;
         }
         nav ul li:hover .dropdown {
@@ -131,22 +126,57 @@
         #container {
             background-color: #0d0d0d;
             color: #FFFFFF;
-            margin: 200px auto 0;
+            margin: 150px auto 0;
             padding: 20px;
             width: 90%;
             max-width: 800px;
             border-radius: 10px;
         }
+        #loading-text {
+            font-size: 1.5rem;
+            color: #F5F5F5;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+        #countdown {
+            font-size: 4rem;
+            color: red;
+            background-color: black;
+            border: 4px solid lightgray;
+            border-radius: 10px;
+            display: none;
+            width: 350px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
         footer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             width: 100%;
             text-align: center;
+            background-color: #171717;
             color: #D3D3D3;
             padding: 10px 0;
-            z-index: 1000;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 10px 40px;
+            }
+            #countdown {
+                font-size: 2.5rem;
+                width: 250px;
+                height: 80px;
+                line-height: 80px;
+            }
         }
     </style>
 </head>

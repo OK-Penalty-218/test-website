@@ -61,5 +61,13 @@
     <footer>
         <p>Made with ♥ by Chat GPT</p>
     </footer>
+    <script>          // Check if the user is on a mobile device
+          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (isMobile) {
+            // Redirect to a mobile-specific file
+            window.location.href = "/mobile/fut/mb-template.html"; // Replace with your mobile page file
+          }
+        });
+    </script>
 </body>
 </html>

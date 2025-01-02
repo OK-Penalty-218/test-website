@@ -19,7 +19,6 @@
             box-sizing: border-box;
             background-color: #212121;
         }
-
         header {
             position: fixed;
             top: 0;
@@ -34,7 +33,6 @@
             height: 80px;
             z-index: 1000;
         }
-
         .logo {
             margin-left: 1rem;
             display: flex;
@@ -43,7 +41,6 @@
             width: 200px;
             justify-content: center;
         }
-
         .logo img {
             height: 60%;
             width: auto;
@@ -56,21 +53,18 @@
             align-items: center;
             position: relative;
         }
-
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 75px; /* Increased the gap to 100px */
+            gap: 60px; /* Increased the gap to 100px */
             justify-content: center;
             align-items: center;
         }
-
         nav ul li {
             position: relative;
         }
-
         nav ul li a {
             text-decoration: none;
             font-size: 1rem;
@@ -83,12 +77,10 @@
             display: inline-block;
             text-align: center;
         }
-
         nav ul li a:hover {
             background-color: #2f2f2f;
             color: #ffffff;
         }
-
         /* Updated dropdown styles */
         nav ul li .dropdown {
             display: none;
@@ -105,8 +97,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
+        
         nav ul li .dropdown a {
             display: block;
             padding: 10px;
@@ -127,19 +118,16 @@
             width: 75%; /* Adjusted to 80% width of the dropdown */
             margin: 10px auto;
         }
-
         nav ul li:hover .dropdown {
             display: block;
             opacity: 1;
             visibility: visible;
         }
-
         .divider {
             width: 1px;
             height: 30px;
             background-color: #D3D3D3;
         }
-
         #container {
             background-color: #0d0d0d;
             color: #FFFFFF;
@@ -149,7 +137,6 @@
             max-width: 800px;
             border-radius: 10px;
         }
-
         footer {
             position: absolute;
             bottom: 0;
@@ -167,7 +154,7 @@
     <header>
         <div class="logo">
             <a href="home.html">
-                <img src="images/logo.png" alt="Logo">
+                <img src="/images/logo.png" alt="Logo">
             </a>
         </div>
         <nav>
@@ -175,33 +162,33 @@
                 <li>
                     <a>About Me</a>
                     <div class="dropdown">
-                        <a href="about-me/who.html">Who am I?</a>
+                        <a href="/abtme/who.html">Who am I?</a>
                         <hr>
-                        <a href="about-me/what.html">What am I?</a>
+                        <a href="/abtme/what.html">What am I?</a>
                         <hr>
-                        <a href="about-me/when.html">When will I?</a>
+                        <a href="/abtmme/when.html">When will I?</a>
                     </div>
                 </li>
                 <div class="divider"></div>
                 <li>
                     <a>My Blogs</a>
                     <div class="dropdown">
-                        <a href="blogs/blog1.html">Blog 1</a>
+                        <a href="/blg/blog1.html">Blog 1</a>
                         <hr>
-                        <a href="blogs/blog2.html">Blog 2</a>
+                        <a href="/blg/blog2.html">Blog 2</a>
                         <hr>
-                        <a href="blogs/blog3.html">Blog 3</a>
+                        <a href="/blg/blog3.html">Blog 3</a>
                     </div>
                 </li>
                 <div class="divider"></div>
                 <li>
                     <a>Future Devs</a>
                     <div class="dropdown">
-                        <a href="future-devs/future1.html">Future 1</a>
+                        <a href="/fut/future1.html">Future 1</a>
                         <hr>
-                        <a href="future-devs/future2.html">Future 2</a>
+                        <a href="/fut/future2.html">Future 2</a>
                         <hr>
-                        <a href="future-devs/future3.html">Future 3</a>
+                        <a href="/fut/future3.html">Future 3</a>
                     </div>
                 </li>
             </ul>
